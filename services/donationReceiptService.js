@@ -15,6 +15,18 @@ const logoPath = path.join(
 );
 
 // ============================================================
+// DEVANAGARI / HINDI FONT
+// ============================================================
+
+const devanagariFontPath = path.join(
+  __dirname,
+  "..",
+  "public",
+  "fonts",
+  "NotoSansDevanagari-Regular.ttf"
+);
+
+// ============================================================
 // PAGE
 // ============================================================
 
@@ -67,11 +79,48 @@ function truncate(value, maxLength) {
 }
 
 // ============================================================
+// DEVANAGARI CHECK
+// ============================================================
+
+function hasDevanagari(text) {
+  return /[\u0900-\u097F]/.test(
+    String(text || "")
+  );
+}
+
+// ============================================================
+// MEMBER NAME FONT
+// ============================================================
+
+function setMemberNameFont(doc, value) {
+  const text = String(value || "");
+
+  if (
+    hasDevanagari(text) &&
+    fs.existsSync(devanagariFontPath)
+  ) {
+    try {
+      doc.font(devanagariFontPath);
+      return;
+    } catch (error) {
+      console.error(
+        "⚠️ Devanagari font loading failed:",
+        error.message
+      );
+    }
+  }
+
+  doc.font("Times-BoldItalic");
+}
+
+// ============================================================
 // DATE
 // ============================================================
 
 function getDate(value) {
-  const date = value ? new Date(value) : new Date();
+  const date = value
+    ? new Date(value)
+    : new Date();
 
   if (Number.isNaN(date.getTime())) {
     return new Date();
@@ -81,11 +130,14 @@ function getDate(value) {
 }
 
 function formatDate(value) {
-  return getDate(value).toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+  return getDate(value).toLocaleDateString(
+    "en-IN",
+    {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }
+  );
 }
 
 // ============================================================
@@ -102,8 +154,13 @@ function getValidTill(value, membershipType) {
 
   const date = getDate(value);
 
-  date.setFullYear(date.getFullYear() + 1);
-  date.setDate(date.getDate() - 1);
+  date.setFullYear(
+    date.getFullYear() + 1
+  );
+
+  date.setDate(
+    date.getDate() - 1
+  );
 
   return formatDate(date);
 }
@@ -119,10 +176,13 @@ function formatAmount(value) {
     return "0.00";
   }
 
-  return amount.toLocaleString("en-IN", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+  return amount.toLocaleString(
+    "en-IN",
+    {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }
+  );
 }
 
 // ============================================================
@@ -179,7 +239,9 @@ function numberToWordsIndian(number) {
 
     return (
       tens[Math.floor(n / 10)] +
-      (n % 10 ? " " + ones[n % 10] : "")
+      (n % 10
+        ? " " + ones[n % 10]
+        : "")
     );
   }
 
@@ -188,7 +250,11 @@ function numberToWordsIndian(number) {
 
     if (n >= 10000000) {
       result +=
-        convert(Math.floor(n / 10000000)) +
+        convert(
+          Math.floor(
+            n / 10000000
+          )
+        ) +
         " Crore ";
 
       n %= 10000000;
@@ -196,7 +262,11 @@ function numberToWordsIndian(number) {
 
     if (n >= 100000) {
       result +=
-        convert(Math.floor(n / 100000)) +
+        convert(
+          Math.floor(
+            n / 100000
+          )
+        ) +
         " Lakh ";
 
       n %= 100000;
@@ -204,7 +274,11 @@ function numberToWordsIndian(number) {
 
     if (n >= 1000) {
       result +=
-        convert(Math.floor(n / 1000)) +
+        convert(
+          Math.floor(
+            n / 1000
+          )
+        ) +
         " Thousand ";
 
       n %= 1000;
@@ -212,7 +286,11 @@ function numberToWordsIndian(number) {
 
     if (n >= 100) {
       result +=
-        ones[Math.floor(n / 100)] +
+        ones[
+          Math.floor(
+            n / 100
+          )
+        ] +
         " Hundred ";
 
       n %= 100;
@@ -242,7 +320,8 @@ function generateCertificateNumber(data) {
   }
 
   const transactionId = safe(
-    data.txnid || data.transactionId,
+    data.txnid ||
+      data.transactionId,
     ""
   );
 
@@ -276,58 +355,62 @@ function getMemberName(data) {
 // ============================================================
 
 function generateDonationReceipt(data) {
-  return new Promise((resolve, reject) => {
-    try {
-      const doc = new PDFDocument({
-        size: "A4",
-        layout: "landscape",
-        margin: 0,
-        autoFirstPage: true,
+  return new Promise(
+    (resolve, reject) => {
+      try {
+        const doc = new PDFDocument({
+          size: "A4",
+          layout: "landscape",
+          margin: 0,
+          autoFirstPage: true,
 
-        info: {
-          Title:
-            "Membership Certificate - Manorama Charitable Trust",
+          info: {
+            Title:
+              "Membership Certificate - Manorama Charitable Trust",
 
-          Author:
-            "Manorama Charitable Trust",
+            Author:
+              "Manorama Charitable Trust",
 
-          Subject:
-            "Membership Certificate",
+            Subject:
+              "Membership Certificate",
 
-          Keywords:
-            "Membership Certificate, Manorama Charitable Trust",
-        },
-      });
+            Keywords:
+              "Membership Certificate, Manorama Charitable Trust",
+          },
+        });
 
-      const chunks = [];
+        const chunks = [];
 
-      doc.on("data", (chunk) => {
-        chunks.push(chunk);
-      });
+        doc.on("data", (chunk) => {
+          chunks.push(chunk);
+        });
 
-      doc.on("end", () => {
-        resolve(Buffer.concat(chunks));
-      });
+        doc.on("end", () => {
+          resolve(
+            Buffer.concat(chunks)
+          );
+        });
 
-      doc.on("error", (error) => {
+        doc.on("error", (error) => {
+          reject(error);
+        });
+
+        drawBackground(doc);
+        drawBorder(doc);
+        drawTopTaglines(doc);
+        drawLogo(doc);
+        drawTitle(doc);
+        drawMainContent(doc, data);
+        drawInformationBox(doc, data);
+        drawRegards(doc);
+        drawBottomWave(doc);
+
+        doc.end();
+      } catch (error) {
         reject(error);
-      });
-
-      drawBackground(doc);
-      drawBorder(doc);
-      drawTopTaglines(doc);
-      drawLogo(doc);
-      drawTitle(doc);
-      drawMainContent(doc, data);
-      drawInformationBox(doc, data);
-      drawRegards(doc);
-      drawBottomWave(doc);
-
-      doc.end();
-    } catch (error) {
-      reject(error);
+      }
     }
-  });
+  );
 }
 
 // ============================================================
@@ -576,8 +659,12 @@ function drawMainContent(doc, data) {
   // Member Name
   // ----------------------------------------------------------
 
+  setMemberNameFont(
+    doc,
+    memberName
+  );
+
   doc
-    .font("Times-BoldItalic")
     .fontSize(25)
     .fillColor(COLORS.darkRed)
     .text(
@@ -720,7 +807,10 @@ function drawMainContent(doc, data) {
 // INFORMATION BOX
 // ============================================================
 
-function drawInformationBox(doc, data) {
+function drawInformationBox(
+  doc,
+  data
+) {
   const certificateNo =
     generateCertificateNumber(data);
 
@@ -776,8 +866,11 @@ function drawInformationBox(doc, data) {
   // Rows
   // ----------------------------------------------------------
 
-  const labelX = boxX + 10;
-  const valueX = boxX + 91;
+  const labelX =
+    boxX + 10;
+
+  const valueX =
+    boxX + 91;
 
   const rows = [
     {
@@ -869,7 +962,8 @@ function drawInformationBox(doc, data) {
       boxX + 5,
       boxY + 108,
       {
-        width: boxWidth - 10,
+        width:
+          boxWidth - 10,
         align: "center",
       }
     );
@@ -991,8 +1085,14 @@ function drawBottomWave(doc) {
       842,
       520
     )
-    .lineTo(842, 596)
-    .lineTo(42, 596)
+    .lineTo(
+      842,
+      596
+    )
+    .lineTo(
+      42,
+      596
+    )
     .closePath()
     .fill(COLORS.orange);
 
@@ -1023,7 +1123,10 @@ function drawBottomWave(doc) {
       842,
       533
     )
-    .lineTo(842, 569)
+    .lineTo(
+      842,
+      569
+    )
     .bezierCurveTo(
       790,
       580,

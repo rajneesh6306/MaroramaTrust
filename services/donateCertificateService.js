@@ -14,6 +14,14 @@ const logoPath = path.join(
   "logo.jpeg"
 );
 
+const devanagariFontPath = path.join(
+  __dirname,
+  "..",
+  "public",
+  "fonts",
+  "NotoSansDevanagari-Regular.ttf"
+);
+
 
 // ============================================================
 // PAGE
@@ -68,6 +76,43 @@ function truncate(value, maxLength) {
   }
 
   return text.substring(0, maxLength - 3) + "...";
+}
+
+
+// ============================================================
+// DEVANAGARI CHECK
+// ============================================================
+
+function hasDevanagari(text) {
+  return /[\u0900-\u097F]/.test(
+    String(text || "")
+  );
+}
+
+
+// ============================================================
+// DONOR NAME FONT
+// ============================================================
+
+function setDonorNameFont(doc, value) {
+  const text = String(value || "");
+
+  if (
+    hasDevanagari(text) &&
+    fs.existsSync(devanagariFontPath)
+  ) {
+    try {
+      doc.font(devanagariFontPath);
+      return;
+    } catch (error) {
+      console.error(
+        "⚠️ Devanagari font loading failed:",
+        error.message
+      );
+    }
+  }
+
+  doc.font("Times-BoldItalic");
 }
 
 
@@ -682,8 +727,12 @@ function drawMainContent(doc, data) {
   // Donor Name
   // ----------------------------------------------------------
 
+  setDonorNameFont(
+    doc,
+    donorName
+  );
+
   doc
-    .font("Times-BoldItalic")
     .fontSize(25)
     .fillColor(COLORS.darkRed)
     .text(
@@ -1048,6 +1097,7 @@ function drawRegards(doc) {
 
 function drawBottomWave(doc) {
   // Orange wave
+
   doc
     .moveTo(
       42,
@@ -1090,6 +1140,7 @@ function drawBottomWave(doc) {
 
 
   // White wave
+
   doc
     .moveTo(
       42,
@@ -1152,6 +1203,7 @@ function drawBottomWave(doc) {
 
 
   // Footer
+
   doc
     .font("Times-Bold")
     .fontSize(7)

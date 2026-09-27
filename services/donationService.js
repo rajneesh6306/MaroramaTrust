@@ -11,6 +11,15 @@ const {
   PAYU_PAYMENT_URL,
 } = require("./payuService");
 
+// ============================================================
+// MEMBERSHIP PAYU CALLBACK URLS
+// ============================================================
+
+const {
+  PAYU_SUCCESS_URL,
+  PAYU_FAILURE_URL,
+} = require("../config/payuConfig");
+
 const {
   generateDonationReceipt,
 } = require("./donationReceiptService");
@@ -182,7 +191,8 @@ function initiateDonation(input) {
   const membership =
     validateDonation(input);
 
-  const txnid = generateTxnId();
+  const txnid =
+    generateTxnId();
 
   const paymentData = createPaymentData({
     txnid,
@@ -203,11 +213,15 @@ function initiateDonation(input) {
     productinfo:
       "Membership",
 
-    // Keep UDF fields useful.
+    // --------------------------------------------------------
+    // UDF FIELDS
+    // --------------------------------------------------------
     // UDF1 = Membership Type
     // UDF2 = Payment Mode
     // UDF3 = Message
     // UDF4/UDF5 = Empty
+    // --------------------------------------------------------
+
     udf1:
       membership.membershipType,
 
@@ -217,9 +231,21 @@ function initiateDonation(input) {
     udf3:
       membership.message,
 
-    udf4: "",
+    udf4:
+      "",
 
-    udf5: "",
+    udf5:
+      "",
+
+    // --------------------------------------------------------
+    // MEMBERSHIP PAYU CALLBACK URLS
+    // --------------------------------------------------------
+
+    surl:
+      PAYU_SUCCESS_URL,
+
+    furl:
+      PAYU_FAILURE_URL,
   });
 
   // ----------------------------------------------------------
@@ -231,7 +257,8 @@ function initiateDonation(input) {
 
     txnid,
 
-    createdAt: Date.now(),
+    createdAt:
+      Date.now(),
   });
 
   store.cleanup();
@@ -240,26 +267,52 @@ function initiateDonation(input) {
   // Console
   // ----------------------------------------------------------
 
-  console.log("\n=================================");
-  console.log("💳 PAYU MEMBERSHIP PAYMENT INITIATED");
-  console.log("Transaction:", txnid);
+  console.log(
+    "\n================================="
+  );
+
+  console.log(
+    "💳 PAYU MEMBERSHIP PAYMENT INITIATED"
+  );
+
+  console.log(
+    "Transaction:",
+    txnid
+  );
+
   console.log(
     "Member:",
     membership.memberName
   );
+
   console.log(
     "Membership Type:",
     membership.membershipType
   );
+
   console.log(
     "Amount:",
     membership.amount
   );
+
   console.log(
     "Email:",
     membership.email
   );
-  console.log("=================================");
+
+  console.log(
+    "Success URL:",
+    PAYU_SUCCESS_URL
+  );
+
+  console.log(
+    "Failure URL:",
+    PAYU_FAILURE_URL
+  );
+
+  console.log(
+    "================================="
+  );
 
   return {
     paymentData,
@@ -269,7 +322,8 @@ function initiateDonation(input) {
 
     // Keep existing property name
     // so current PayU EJS does not break.
-    donation: membership,
+    donation:
+      membership,
   };
 }
 

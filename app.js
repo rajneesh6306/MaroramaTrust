@@ -3,9 +3,19 @@ require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
 
-const { port, viewsDir, publicDir } = require("./config/appConfig");
+const {
+  port,
+  viewsDir,
+  publicDir,
+} = require("./config/appConfig");
 
-const { verifyEmailConnection } = require("./services/emailService");
+const {
+  verifyEmailConnection,
+} = require("./services/emailService");
+
+const {
+  startDailyReportScheduler,
+} = require("./services/dailyReportScheduler");
 
 const notFound = require("./middleware/notFound");
 
@@ -137,13 +147,25 @@ if (require.main === module) {
 
     console.log("=================================");
 
-    console.log(`🚀 Server running at http://localhost:${port}`);
+    console.log(
+      `🚀 Server running at http://localhost:${port}`,
+    );
 
     console.log("=================================");
 
     console.log("");
 
+    // ========================================
+    // VERIFY EMAIL CONNECTION
+    // ========================================
+
     await verifyEmailConnection();
+
+    // ========================================
+    // START DAILY REPORT SCHEDULER
+    // ========================================
+
+    startDailyReportScheduler();
   });
 }
 

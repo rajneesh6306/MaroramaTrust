@@ -21,9 +21,9 @@
 
   <style>
 
-    /* ========================================
-       RESET / BASE
-    ======================================== */
+    /* =====================================================
+       BASE
+    ===================================================== */
 
     * {
       box-sizing: border-box;
@@ -31,7 +31,9 @@
 
     body {
       margin: 0;
+      background: #f5f6f8;
       color: #1f2937;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     button,
@@ -41,26 +43,26 @@
     }
 
 
-    /* ========================================
-       DASHBOARD WRAPPER
-    ======================================== */
+    /* =====================================================
+       MAIN CONTAINER
+    ===================================================== */
 
     .dashboard-shell {
-      width: 94%;
-      max-width: 1500px;
-      margin: 28px auto 50px;
+      width: min(96%, 1550px);
+      margin: 24px auto 50px;
     }
 
 
-    /* ========================================
-       TOP HEADER
-    ======================================== */
+    /* =====================================================
+       HEADER
+    ===================================================== */
 
     .dashboard-header {
-      background: #ffffff;
-      border: 1px solid #ececec;
+      background: #fff;
+      border: 1px solid #e8e8e8;
       border-radius: 18px;
-      padding: 22px 26px;
+
+      padding: 18px 22px;
 
       display: flex;
       align-items: center;
@@ -69,7 +71,7 @@
       gap: 20px;
 
       box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.06);
+        0 8px 30px rgba(0, 0, 0, 0.05);
 
       margin-bottom: 22px;
     }
@@ -77,90 +79,107 @@
     .dashboard-brand {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 14px;
     }
 
     .dashboard-logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
+      width: 56px;
+      height: 56px;
+
+      border-radius: 13px;
+
       object-fit: cover;
+
       border: 1px solid #eee;
     }
 
     .dashboard-brand h1 {
       margin: 0;
-      font-size: 25px;
-      color: #8e1717;
+
+      font-size: 24px;
+
+      font-weight: 700;
+
+      color: #971b1b;
     }
 
     .dashboard-brand p {
       margin: 5px 0 0;
-      color: #6b7280;
-      font-size: 14px;
+
+      font-size: 13px;
+
+      color: #737b87;
     }
 
     .dashboard-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
     .home-btn,
     .logout-btn {
       border: none;
+
       text-decoration: none;
+
       cursor: pointer;
 
       border-radius: 9px;
 
       padding: 10px 16px;
 
-      font-size: 14px;
+      font-size: 13px;
+
+      font-weight: 600;
     }
 
     .home-btn {
-      background: #f5f5f5;
+      background: #f3f4f6;
       color: #333;
     }
 
     .logout-btn {
-      background: #8e1717;
+      background: #971b1b;
       color: #fff;
     }
 
     .home-btn:hover,
     .logout-btn:hover {
-      opacity: 0.9;
+      opacity: .88;
     }
 
 
-    /* ========================================
-       WELCOME SECTION
-    ======================================== */
+    /* =====================================================
+       PAGE TITLE
+    ===================================================== */
 
     .welcome-section {
-      margin: 8px 2px 22px;
+      margin: 8px 3px 20px;
     }
 
     .welcome-section h2 {
       margin: 0;
 
-      font-size: 26px;
+      font-size: 27px;
 
       color: #222;
+
+      letter-spacing: -.4px;
     }
 
     .welcome-section p {
       margin: 6px 0 0;
 
-      color: #6b7280;
+      color: #737b87;
+
+      font-size: 14px;
     }
 
 
-    /* ========================================
-       STATISTICS
-    ======================================== */
+    /* =====================================================
+       TOP STAT CARDS
+    ===================================================== */
 
     .stats-grid {
       display: grid;
@@ -168,28 +187,28 @@
       grid-template-columns:
         repeat(5, minmax(0, 1fr));
 
-      gap: 16px;
+      gap: 14px;
 
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .stat-card {
-      background: #fff;
-
-      border: 1px solid #ececec;
-
-      border-radius: 16px;
-
-      padding: 20px;
-
-      box-shadow:
-        0 6px 22px rgba(0, 0, 0, 0.05);
-
-      min-height: 135px;
-
       position: relative;
 
       overflow: hidden;
+
+      background: #fff;
+
+      border: 1px solid #e8e8e8;
+
+      border-radius: 16px;
+
+      padding: 18px;
+
+      min-height: 138px;
+
+      box-shadow:
+        0 5px 20px rgba(0, 0, 0, .045);
     }
 
     .stat-card::after {
@@ -197,105 +216,104 @@
 
       position: absolute;
 
-      right: -25px;
-      bottom: -30px;
+      width: 85px;
+      height: 85px;
 
-      width: 90px;
-      height: 90px;
+      right: -28px;
+      bottom: -28px;
 
       border-radius: 50%;
 
-      background:
-        rgba(244, 123, 0, 0.08);
-    }
-
-    .stat-label {
-      color: #6b7280;
-
-      font-size: 13px;
-
-      font-weight: 600;
-
-      margin-bottom: 12px;
-    }
-
-    .stat-value {
-      font-size: 28px;
-
-      font-weight: 700;
-
-      color: #222;
-
-      line-height: 1.2;
-    }
-
-    .stat-subtitle {
-      margin-top: 8px;
-
-      color: #8b8b8b;
-
-      font-size: 12px;
+      background: rgba(151, 27, 27, .055);
     }
 
     .stat-icon {
       position: absolute;
 
-      right: 17px;
-      top: 17px;
+      right: 15px;
+      top: 15px;
 
-      width: 38px;
-      height: 38px;
+      width: 37px;
+      height: 37px;
 
       border-radius: 10px;
+
+      background: #fff4e8;
 
       display: flex;
 
       align-items: center;
       justify-content: center;
 
-      background: #fff3e6;
+      font-size: 17px;
+    }
 
-      font-size: 18px;
+    .stat-label {
+      color: #667085;
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      color: #202124;
+
+      font-size: 27px;
+
+      font-weight: 750;
+
+      line-height: 1.15;
+    }
+
+    .stat-subtitle {
+      margin-top: 8px;
+
+      color: #8a8f98;
+
+      font-size: 11px;
     }
 
 
-    /* ========================================
-       CONTENT CARD
-    ======================================== */
+    /* =====================================================
+       CARD
+    ===================================================== */
 
     .dashboard-card {
-      background: #ffffff;
+      background: #fff;
 
-      border: 1px solid #ececec;
+      border: 1px solid #e8e8e8;
 
-      border-radius: 18px;
-
-      box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.05);
-
-      margin-bottom: 24px;
+      border-radius: 17px;
 
       overflow: hidden;
+
+      margin-bottom: 20px;
+
+      box-shadow:
+        0 6px 24px rgba(0, 0, 0, .04);
     }
 
     .card-header {
-      padding: 22px 24px;
+      padding: 19px 22px;
 
       display: flex;
 
-      justify-content: space-between;
-
       align-items: center;
+
+      justify-content: space-between;
 
       gap: 15px;
 
-      border-bottom: 1px solid #eeeeee;
+      border-bottom: 1px solid #ededed;
     }
 
     .card-title h2 {
       margin: 0;
 
-      font-size: 20px;
+      font-size: 19px;
 
       color: #222;
     }
@@ -303,65 +321,154 @@
     .card-title p {
       margin: 5px 0 0;
 
-      color: #777;
+      color: #7a808a;
 
-      font-size: 13px;
+      font-size: 12px;
     }
 
 
-    /* ========================================
+    /* =====================================================
+       TOP SUMMARY ROW
+    ===================================================== */
+
+    .summary-top-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 18px;
+
+      margin-bottom: 20px;
+    }
+
+    .summary-panel {
+      background: #fff;
+
+      border: 1px solid #e8e8e8;
+
+      border-radius: 17px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 6px 24px rgba(0, 0, 0, .04);
+    }
+
+    .summary-panel-header {
+      padding: 18px 20px;
+
+      border-bottom: 1px solid #eee;
+    }
+
+    .summary-panel-header h3 {
+      margin: 0;
+
+      font-size: 17px;
+
+      color: #222;
+    }
+
+    .summary-panel-header p {
+      margin: 4px 0 0;
+
+      font-size: 12px;
+
+      color: #7a808a;
+    }
+
+    .summary-panel-body {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 12px;
+
+      padding: 17px;
+    }
+
+    .summary-box {
+      background: #fafafa;
+
+      border: 1px solid #ececec;
+
+      border-radius: 11px;
+
+      padding: 14px;
+    }
+
+    .summary-box-label {
+      font-size: 11px;
+
+      color: #777;
+
+      margin-bottom: 7px;
+    }
+
+    .summary-box-value {
+      font-size: 21px;
+
+      font-weight: 750;
+
+      color: #222;
+    }
+
+
+    /* =====================================================
        FILTERS
-    ======================================== */
+    ===================================================== */
 
     .filters {
-      padding: 16px 24px;
+      padding: 14px 20px;
 
       display: grid;
 
       grid-template-columns:
-        minmax(240px, 1fr)
+        minmax(260px, 1fr)
         180px
         180px;
 
-      gap: 12px;
+      gap: 10px;
 
       background: #fafafa;
 
-      border-bottom: 1px solid #eeeeee;
+      border-bottom: 1px solid #eee;
     }
 
     .filter-input,
     .filter-select {
       width: 100%;
 
-      border: 1px solid #ddd;
+      min-height: 39px;
+
+      border: 1px solid #dfe1e5;
 
       background: #fff;
 
-      border-radius: 9px;
+      border-radius: 8px;
 
-      padding: 10px 12px;
+      padding: 9px 11px;
 
       outline: none;
 
       color: #333;
 
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .filter-input:focus,
     .filter-select:focus {
-      border-color: #f47b00;
+      border-color: #971b1b;
 
       box-shadow:
-        0 0 0 3px
-        rgba(244, 123, 0, 0.10);
+        0 0 0 3px rgba(151, 27, 27, .08);
     }
 
 
-    /* ========================================
+    /* =====================================================
        TABLE
-    ======================================== */
+    ===================================================== */
 
     .table-scroll {
       width: 100%;
@@ -372,102 +479,131 @@
     .data-table {
       width: 100%;
 
-      min-width: 1250px;
+      min-width: 1200px;
 
       border-collapse: collapse;
     }
 
+    .medical-table {
+      min-width: 1050px;
+    }
+
     .data-table th {
+      padding: 13px 15px;
+
       background: #fafafa;
+
+      border-bottom: 1px solid #e6e6e6;
 
       color: #555;
 
-      font-size: 12px;
+      font-size: 10px;
 
       font-weight: 700;
 
       text-transform: uppercase;
 
-      letter-spacing: 0.3px;
-
-      padding: 14px 16px;
-
-      text-align: left;
+      letter-spacing: .35px;
 
       white-space: nowrap;
 
-      border-bottom: 1px solid #e8e8e8;
+      text-align: left;
     }
 
     .data-table td {
-      padding: 15px 16px;
+      padding: 14px 15px;
 
       border-bottom: 1px solid #f0f0f0;
 
       vertical-align: top;
 
-      font-size: 13px;
+      font-size: 12px;
 
       color: #444;
     }
 
     .data-table tbody tr:hover {
-      background: #fffaf5;
+      background: #fffaf6;
     }
 
 
-    /* ========================================
-       MEMBER / DONOR CELL
-    ======================================== */
+    /* =====================================================
+       TABLE CONTENT
+    ===================================================== */
 
-    .member-primary {
-      font-weight: 700;
-
-      color: #222;
-
-      margin-bottom: 4px;
-    }
-
+    .member-primary,
     .donor-primary {
       font-weight: 700;
 
       color: #222;
 
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
-
-    /* ========================================
-       AMOUNT
-    ======================================== */
-
     .amount-cell {
-      font-size: 15px !important;
-
       font-weight: 700;
+
+      font-size: 13px !important;
 
       color: #222 !important;
 
       white-space: nowrap;
     }
 
+    .transaction-id,
+    .payu-id {
+      max-width: 170px;
 
-    /* ========================================
+      word-break: break-all;
+
+      font-family: monospace;
+
+      font-size: 10px;
+
+      color: #555;
+    }
+
+    .payu-id {
+      margin-top: 5px;
+
+      color: #888;
+    }
+
+    .date-main {
+      font-weight: 600;
+
+      color: #333;
+
+      white-space: nowrap;
+    }
+
+    .date-time {
+      margin-top: 4px;
+
+      color: #888;
+
+      font-size: 10px;
+
+      white-space: nowrap;
+    }
+
+
+    /* =====================================================
        BADGES
-    ======================================== */
+    ===================================================== */
 
     .badge {
       display: inline-flex;
 
       align-items: center;
 
-      gap: 5px;
+      gap: 4px;
 
-      padding: 5px 9px;
+      padding: 5px 8px;
 
       border-radius: 20px;
 
-      font-size: 11px;
+      font-size: 10px;
 
       font-weight: 700;
 
@@ -499,89 +635,214 @@
     }
 
 
-    /* ========================================
-       TRANSACTION
-    ======================================== */
-
-    .transaction-id {
-      font-family: monospace;
-
-      font-size: 11px;
-
-      color: #555;
-
-      word-break: break-all;
-
-      max-width: 170px;
-    }
-
-    .payu-id {
-      font-family: monospace;
-
-      font-size: 11px;
-
-      color: #777;
-
-      word-break: break-all;
-
-      max-width: 130px;
-    }
-
-
-    /* ========================================
-       DATE
-    ======================================== */
-
-    .date-main {
-      font-weight: 600;
-
-      color: #333;
-    }
-
-    .date-time {
-      margin-top: 3px;
-
-      color: #888;
-
-      font-size: 11px;
-    }
-
-
-    /* ========================================
-       CERTIFICATE BUTTON
-    ======================================== */
+    /* =====================================================
+       CERTIFICATE
+    ===================================================== */
 
     .certificate-btn {
       display: inline-block;
 
+      background: #971b1b;
+
+      color: #fff;
+
       text-decoration: none;
 
-      background: #8e1717;
-
-      color: white;
-
-      padding: 7px 11px;
+      padding: 7px 10px;
 
       border-radius: 7px;
 
-      font-size: 11px;
+      font-size: 10px;
 
-      font-weight: 600;
+      font-weight: 700;
 
       white-space: nowrap;
     }
 
     .certificate-btn:hover {
-      opacity: 0.9;
+      opacity: .88;
     }
 
 
-    /* ========================================
-       EMPTY STATE
-    ======================================== */
+    /* =====================================================
+       DATE REPORT
+    ===================================================== */
+
+    .date-report-header {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+    }
+
+    .date-picker-area {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+    }
+
+    .date-picker-area label {
+      color: #555;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+    .date-picker-area input {
+      height: 39px;
+
+      border: 1px solid #ddd;
+
+      border-radius: 8px;
+
+      padding: 7px 10px;
+
+      outline: none;
+
+      color: #333;
+
+      background: #fff;
+    }
+
+    .date-picker-area input:focus {
+      border-color: #971b1b;
+    }
+
+    .clear-date-btn {
+      height: 39px;
+
+      border: 1px solid #ddd;
+
+      background: #f6f6f6;
+
+      color: #444;
+
+      border-radius: 8px;
+
+      padding: 0 13px;
+
+      cursor: pointer;
+
+      font-size: 12px;
+
+      font-weight: 600;
+    }
+
+    .clear-date-btn:hover {
+      background: #eee;
+    }
+
+    .download-report-btn {
+      height: 39px;
+      border: none;
+      background: #971b1b;
+      color: #fff;
+      border-radius: 8px;
+      padding: 0 15px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: .2s ease;
+    }
+
+    .download-report-btn:hover {
+      opacity: .88;
+    }
+
+    .download-report-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .date-summary-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+      gap: 12px;
+
+      padding: 18px 20px;
+
+      background: #fafafa;
+    }
+
+    .date-summary-card {
+      background: #fff;
+
+      border: 1px solid #e9e9e9;
+
+      border-radius: 11px;
+
+      padding: 14px;
+    }
+
+    .date-summary-label {
+      color: #777;
+
+      font-size: 10px;
+
+      margin-bottom: 7px;
+    }
+
+    .date-summary-value {
+      color: #222;
+
+      font-size: 19px;
+
+      font-weight: 750;
+    }
+
+    .selected-date-message {
+      display: none;
+
+      margin: 0 20px 18px;
+
+      padding: 11px 13px;
+
+      border-radius: 8px;
+
+      background: #f8f9fa;
+
+      color: #555;
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       TODAY COLLECTION
+    ===================================================== */
+
+    .today-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 14px;
+
+      padding: 18px 20px;
+    }
+
+
+    /* =====================================================
+       EMPTY
+    ===================================================== */
 
     .empty-state {
-      padding: 50px 20px;
+      padding: 45px 20px;
 
       text-align: center;
 
@@ -589,121 +850,96 @@
     }
 
     .empty-icon {
-      font-size: 35px;
+      font-size: 32px;
 
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
 
     .empty-state h3 {
       margin: 0 0 5px;
 
       color: #333;
+
+      font-size: 16px;
     }
 
     .empty-state p {
       margin: 0;
 
-      font-size: 13px;
-    }
-
-
-    /* ========================================
-       MEDICAL TABLE
-    ======================================== */
-
-    .medical-table {
-      min-width: 1100px;
-    }
-
-    .sensitive-value {
-      font-family: monospace;
-
-      letter-spacing: 1px;
-
-      color: #666;
-    }
-
-
-    /* ========================================
-       SUMMARY MINI CARDS
-    ======================================== */
-
-    .summary-strip {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 15px;
-
-      padding: 20px 24px;
-
-      background: #fafafa;
-
-      border-bottom: 1px solid #eeeeee;
-    }
-
-    .summary-box {
-      background: #fff;
-
-      border: 1px solid #eeeeee;
-
-      border-radius: 10px;
-
-      padding: 14px;
-    }
-
-    .summary-box-label {
       font-size: 12px;
-
-      color: #777;
-
-      margin-bottom: 6px;
-    }
-
-    .summary-box-value {
-      font-size: 20px;
-
-      font-weight: 700;
-
-      color: #222;
     }
 
 
-    /* ========================================
+    /* =====================================================
        FOOTER
-    ======================================== */
+    ===================================================== */
 
     .dashboard-footer {
       text-align: center;
 
-      color: #777;
-
-      font-size: 12px;
-
       margin-top: 25px;
+
+      color: #8a8f98;
+
+      font-size: 11px;
     }
 
 
-    /* ========================================
+    /* =====================================================
        RESPONSIVE
-    ======================================== */
+    ===================================================== */
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1250px) {
 
       .stats-grid {
         grid-template-columns:
           repeat(3, minmax(0, 1fr));
       }
 
+      .date-summary-grid {
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+      }
+
     }
 
-    @media (max-width: 800px) {
+
+    @media (max-width: 900px) {
+
+      .summary-top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        grid-template-columns: 1fr;
+      }
+
+      .date-summary-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .today-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .dashboard-shell {
+        width: 94%;
+
+        margin-top: 12px;
+      }
 
       .dashboard-header {
         align-items: flex-start;
 
         flex-direction: column;
+
+        padding: 16px;
       }
 
       .dashboard-actions {
@@ -718,54 +954,21 @@
       }
 
       .stats-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-      .filters {
         grid-template-columns: 1fr;
       }
 
-      .summary-strip {
+      .summary-panel-body {
         grid-template-columns: 1fr;
       }
 
-    }
-
-    @media (max-width: 520px) {
-
-      .dashboard-shell {
-        width: 94%;
-
-        margin-top: 15px;
-      }
-
-      .dashboard-header {
-        padding: 18px;
-      }
-
-      .dashboard-brand h1 {
-        font-size: 20px;
-      }
-
-      .dashboard-brand p {
-        font-size: 12px;
-      }
-
-      .stats-grid {
+      .date-summary-grid {
         grid-template-columns: 1fr;
       }
 
-      .stat-value {
-        font-size: 25px;
-      }
+      .date-report-header {
+        align-items: flex-start;
 
-      .card-header {
-        padding: 18px;
-      }
-
-      .filters {
-        padding: 14px;
+        flex-direction: column;
       }
 
     }
@@ -775,15 +978,15 @@
 </head>
 
 
-<body class="page-bg">
+<body>
 
 
 <main class="dashboard-shell">
 
 
-  <!-- ========================================
+  <!-- ===================================================
        HEADER
-  ======================================== -->
+  =================================================== -->
 
   <header class="dashboard-header">
 
@@ -839,9 +1042,9 @@
   </header>
 
 
-  <!-- ========================================
-       WELCOME
-  ======================================== -->
+  <!-- ===================================================
+       TITLE
+  =================================================== -->
 
   <section class="welcome-section">
 
@@ -856,14 +1059,12 @@
   </section>
 
 
-  <!-- ========================================
-       MAIN STATISTICS
-  ======================================== -->
+  <!-- ===================================================
+       TOP STATISTICS
+  =================================================== -->
 
   <section class="stats-grid">
 
-
-    <!-- TOTAL MEMBERS -->
 
     <div class="stat-card">
 
@@ -885,8 +1086,6 @@
 
     </div>
 
-
-    <!-- MEMBERSHIP COLLECTION -->
 
     <div class="stat-card">
 
@@ -911,8 +1110,6 @@
     </div>
 
 
-    <!-- DONATION COUNT -->
-
     <div class="stat-card">
 
       <div class="stat-icon">
@@ -933,8 +1130,6 @@
 
     </div>
 
-
-    <!-- DONATION COLLECTION -->
 
     <div class="stat-card">
 
@@ -958,8 +1153,6 @@
 
     </div>
 
-
-    <!-- TOTAL COLLECTION -->
 
     <div class="stat-card">
 
@@ -986,19 +1179,189 @@
   </section>
 
 
-  <!-- ========================================
-       MEMBERSHIP SUMMARY
-  ======================================== -->
+  <!-- ===================================================
+       DATE-WISE REPORT
+  =================================================== -->
 
   <section class="dashboard-card">
 
-    <div class="card-header">
+
+    <div class="card-header date-report-header">
 
       <div class="card-title">
 
         <h2>
-          Membership Summary
+          Date-wise Report
         </h2>
+
+        <p>
+          View memberships, donations and medical help for a selected date
+        </p>
+
+      </div>
+
+
+      <div class="date-picker-area">
+
+        <label for="reportDate">
+          Select Date
+        </label>
+
+        <input
+          type="date"
+          id="reportDate"
+        >
+
+        <button
+          type="button"
+          id="clearReportDate"
+          class="clear-date-btn"
+        >
+          Clear
+        </button>
+
+        <button
+          type="button"
+          id="downloadDailyReport"
+          class="download-report-btn"
+        >
+          📥 Download Daily Report
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="date-summary-grid">
+
+
+      <div class="date-summary-card">
+
+        <div class="date-summary-label">
+          Memberships
+        </div>
+
+        <div
+          class="date-summary-value"
+          id="selectedMembershipCount"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="date-summary-card">
+
+        <div class="date-summary-label">
+          Donations
+        </div>
+
+        <div
+          class="date-summary-value"
+          id="selectedDonationCount"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="date-summary-card">
+
+        <div class="date-summary-label">
+          Medical Help
+        </div>
+
+        <div
+          class="date-summary-value"
+          id="selectedMedicalCount"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="date-summary-card">
+
+        <div class="date-summary-label">
+          Membership Collection
+        </div>
+
+        <div
+          class="date-summary-value"
+          id="selectedMembershipCollection"
+        >
+          ₹0
+        </div>
+
+      </div>
+
+
+      <div class="date-summary-card">
+
+        <div class="date-summary-label">
+          Donation Collection
+        </div>
+
+        <div
+          class="date-summary-value"
+          id="selectedDonationCollection"
+        >
+          ₹0
+        </div>
+
+      </div>
+
+
+      <div class="date-summary-card">
+
+        <div class="date-summary-label">
+          Total Collection
+        </div>
+
+        <div
+          class="date-summary-value"
+          id="selectedTotalCollection"
+        >
+          ₹0
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div
+      id="selectedDateText"
+      class="selected-date-message"
+    ></div>
+
+
+  </section>
+
+
+
+  <!-- ===================================================
+       TOP SUMMARY
+       MEMBERSHIP + DONATION
+  =================================================== -->
+
+  <section class="summary-top-grid">
+
+
+    <!-- MEMBERSHIP SUMMARY -->
+
+    <div class="summary-panel">
+
+      <div class="summary-panel-header">
+
+        <h3>
+          Membership Summary
+        </h3>
 
         <p>
           Current successful membership breakdown
@@ -1006,46 +1369,144 @@
 
       </div>
 
+
+      <div class="summary-panel-body">
+
+
+        <div class="summary-box">
+
+          <div class="summary-box-label">
+            Total Memberships
+          </div>
+
+          <div class="summary-box-value">
+            <%= membershipCount %>
+          </div>
+
+        </div>
+
+
+        <div class="summary-box">
+
+          <div class="summary-box-label">
+            Lifetime Memberships
+          </div>
+
+          <div class="summary-box-value">
+            <%= lifetimeMemberships %>
+          </div>
+
+        </div>
+
+
+        <div class="summary-box">
+
+          <div class="summary-box-label">
+            1 Year Memberships
+          </div>
+
+          <div class="summary-box-value">
+            <%= oneYearMemberships %>
+          </div>
+
+        </div>
+
+
+        <div class="summary-box">
+
+          <div class="summary-box-label">
+            Collection
+          </div>
+
+          <div class="summary-box-value">
+            ₹<%= Number(
+              membershipCollection || 0
+            ).toLocaleString("en-IN") %>
+          </div>
+
+        </div>
+
+
+      </div>
+
     </div>
 
 
-    <div class="summary-strip">
+    <!-- DONATION SUMMARY -->
 
-      <div class="summary-box">
+    <div class="summary-panel">
 
-        <div class="summary-box-label">
-          Total Memberships
-        </div>
+      <div class="summary-panel-header">
 
-        <div class="summary-box-value">
-          <%= membershipCount %>
-        </div>
+        <h3>
+          Donation Summary
+        </h3>
 
-      </div>
-
-
-      <div class="summary-box">
-
-        <div class="summary-box-label">
-          Lifetime Memberships
-        </div>
-
-        <div class="summary-box-value">
-          <%= lifetimeMemberships %>
-        </div>
+        <p>
+          Successful donations received by the Trust
+        </p>
 
       </div>
 
 
-      <div class="summary-box">
+      <div class="summary-panel-body">
 
-        <div class="summary-box-label">
-          1 Year Memberships
+
+        <div class="summary-box">
+
+          <div class="summary-box-label">
+            Total Donations
+          </div>
+
+          <div class="summary-box-value">
+            <%= donationCount %>
+          </div>
+
         </div>
 
-        <div class="summary-box-value">
-          <%= oneYearMemberships %>
+
+        <div class="summary-box">
+
+          <div class="summary-box-label">
+            Donation Collection
+          </div>
+
+          <div class="summary-box-value">
+            ₹<%= Number(
+              donationCollection || 0
+            ).toLocaleString("en-IN") %>
+          </div>
+
         </div>
+
+
+        <div class="summary-box">
+
+          <div class="summary-box-label">
+            Today's Donations
+          </div>
+
+          <div class="summary-box-value">
+            <%= todayDonations %>
+          </div>
+
+        </div>
+
+
+        <div class="summary-box">
+
+          <div class="summary-box-label">
+            Total Collection
+          </div>
+
+          <div class="summary-box-value">
+            ₹<%= Number(
+              totalCollection || 0
+            ).toLocaleString("en-IN") %>
+          </div>
+
+        </div>
+
 
       </div>
 
@@ -1054,9 +1515,9 @@
   </section>
 
 
-  <!-- ========================================
+  <!-- ===================================================
        MEMBERSHIP PAYMENTS
-  ======================================== -->
+  =================================================== -->
 
   <section class="dashboard-card">
 
@@ -1078,9 +1539,8 @@
     </div>
 
 
-    <!-- FILTERS -->
-
     <div class="filters">
+
 
       <input
         type="search"
@@ -1132,6 +1592,7 @@
         </option>
 
       </select>
+
 
     </div>
 
@@ -1195,9 +1656,7 @@
           </thead>
 
 
-          <tbody
-            id="membershipTableBody"
-          >
+          <tbody>
 
 
             <% memberships.forEach(
@@ -1206,32 +1665,52 @@
 
 
               <tr
+
                 class="membership-row"
 
+                data-report-date="<%=
+                  membership.paymentDate
+                    ? new Date(
+                        membership.paymentDate
+                      ).toLocaleDateString(
+                        "en-CA",
+                        {
+                          timeZone:
+                            "Asia/Kolkata"
+                        }
+                      )
+                    : ""
+                %>"
+
+                data-report-amount="<%=
+                  Number(
+                    membership.amount || 0
+                  )
+                %>"
+
                 data-payment-mode="<%=
-                  membership.paymentMode || ''
+                  membership.paymentMode || ""
                 %>"
 
                 data-membership-type="<%=
-                  membership.membershipType || ''
+                  membership.membershipType || ""
                 %>"
 
                 data-search="<%=
                   [
-                    membership.memberName || '',
-                    membership.donorName || '',
-                    membership.phoneNumber || '',
-                    membership.email || '',
-                    membership.transactionId || '',
-                    membership.payuPaymentId || ''
+                    membership.memberName || "",
+                    membership.donorName || "",
+                    membership.phoneNumber || "",
+                    membership.email || "",
+                    membership.transactionId || "",
+                    membership.payuPaymentId || ""
                   ]
-                    .join(' ')
-                    .toLowerCase()
+                  .join(" ")
+                  .toLowerCase()
                 %>"
+
               >
 
-
-                <!-- NUMBER -->
 
                 <td>
                   <strong>
@@ -1239,8 +1718,6 @@
                   </strong>
                 </td>
 
-
-                <!-- MEMBER -->
 
                 <td>
 
@@ -1253,15 +1730,11 @@
                   </div>
 
                   <span class="badge badge-year">
-
                     1 Member
-
                   </span>
 
                 </td>
 
-
-                <!-- CONTACT -->
 
                 <td>
 
@@ -1276,10 +1749,7 @@
 
                   </div>
 
-
-                  <div
-                    style="margin-top:5px;"
-                  >
+                  <div style="margin-top:5px;">
 
                     <strong>
                       Email:
@@ -1293,8 +1763,6 @@
                 </td>
 
 
-                <!-- AMOUNT -->
-
                 <td class="amount-cell">
 
                   ₹<%= Number(
@@ -1302,14 +1770,13 @@
                   ).toLocaleString(
                     "en-IN",
                     {
-                      minimumFractionDigits: 2
+                      minimumFractionDigits:
+                        2
                     }
                   ) %>
 
                 </td>
 
-
-                <!-- MEMBERSHIP TYPE -->
 
                 <td>
 
@@ -1320,16 +1787,13 @@
                     "lifetime member"
                   ) { %>
 
-
                     <span
                       class="badge badge-lifetime"
                     >
                       ♾ Lifetime
                     </span>
 
-
                   <% } else { %>
-
 
                     <span
                       class="badge badge-year"
@@ -1337,13 +1801,10 @@
                       1 Year
                     </span>
 
-
                   <% } %>
 
                 </td>
 
-
-                <!-- PAYMENT -->
 
                 <td>
 
@@ -1355,24 +1816,18 @@
                 </td>
 
 
-                <!-- STATUS -->
-
                 <td>
 
                   <span
                     class="badge badge-success"
                   >
-
                     ●
                     <%= membership.paymentStatus ||
                         "SUCCESS" %>
-
                   </span>
 
                 </td>
 
-
-                <!-- TRANSACTION -->
 
                 <td>
 
@@ -1388,24 +1843,17 @@
                     membership.payuPaymentId
                   ) { %>
 
-
-                    <div
-                      class="payu-id"
-                      style="margin-top:7px;"
-                    >
+                    <div class="payu-id">
 
                       PayU:
                       <%= membership.payuPaymentId %>
 
                     </div>
 
-
                   <% } %>
 
                 </td>
 
-
-                <!-- DATE -->
 
                 <td>
 
@@ -1432,45 +1880,33 @@
                 </td>
 
 
-                <!-- CERTIFICATE -->
-
                 <td>
 
                   <% if (
                     membership.transactionId
                   ) { %>
 
-
                     <a
                       href="/donation/receipt/<%= encodeURIComponent(
                         membership.transactionId
                       ) %>"
-
                       class="certificate-btn"
-
                       target="_blank"
-
                       rel="noopener"
                     >
-
                       Certificate
-
                     </a>
-
 
                   <% } else { %>
 
-
-                    <span
-                      style="color:#999;"
-                    >
+                    <span style="color:#999;">
                       -
                     </span>
-
 
                   <% } %>
 
                 </td>
+
 
               </tr>
 
@@ -1511,83 +1947,9 @@
   </section>
 
 
-  <!-- ========================================
-       DONATION SUMMARY
-  ======================================== -->
-
-  <section class="dashboard-card">
-
-    <div class="card-header">
-
-      <div class="card-title">
-
-        <h2>
-          Donation Summary
-        </h2>
-
-        <p>
-          Successful donations received by the Trust
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="summary-strip">
-
-      <div class="summary-box">
-
-        <div class="summary-box-label">
-          Total Donations
-        </div>
-
-        <div class="summary-box-value">
-          <%= donationCount %>
-        </div>
-
-      </div>
-
-
-      <div class="summary-box">
-
-        <div class="summary-box-label">
-          Donation Collection
-        </div>
-
-        <div class="summary-box-value">
-
-          ₹<%= Number(
-            donationCollection || 0
-          ).toLocaleString("en-IN") %>
-
-        </div>
-
-      </div>
-
-
-      <div class="summary-box">
-
-        <div class="summary-box-label">
-          Today's Donations
-        </div>
-
-        <div class="summary-box-value">
-
-          <%= todayDonations %>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ========================================
+  <!-- ===================================================
        DONATIONS
-  ======================================== -->
+  =================================================== -->
 
   <section class="dashboard-card">
 
@@ -1609,9 +1971,8 @@
     </div>
 
 
-    <!-- DONATION FILTERS -->
-
     <div class="filters">
+
 
       <input
         type="search"
@@ -1671,6 +2032,7 @@
         </option>
 
       </select>
+
 
     </div>
 
@@ -1732,9 +2094,7 @@
           </thead>
 
 
-          <tbody
-            id="donationTableBody"
-          >
+          <tbody>
 
 
             <% donations.forEach(
@@ -1743,32 +2103,54 @@
 
 
               <tr
+
                 class="donation-row"
 
+                data-report-date="<%=
+                  donation.paymentDate
+                    ? new Date(
+                        donation.paymentDate
+                      ).toLocaleDateString(
+                        "en-CA",
+                        {
+                          timeZone:
+                            "Asia/Kolkata"
+                        }
+                      )
+                    : ""
+                %>"
+
+                data-report-amount="<%=
+                  Number(
+                    donation.amount || 0
+                  )
+                %>"
+
                 data-payment-mode="<%=
-                  donation.paymentMode || ''
+                  donation.paymentMode || ""
                 %>"
 
                 data-amount="<%=
-                  Number(donation.amount || 0)
+                  Number(
+                    donation.amount || 0
+                  )
                 %>"
 
                 data-search="<%=
                   [
-                    donation.donorName || '',
-                    donation.phoneNumber || '',
-                    donation.email || '',
-                    donation.transactionId || '',
-                    donation.payuPaymentId || '',
-                    donation.message || ''
+                    donation.donorName || "",
+                    donation.phoneNumber || "",
+                    donation.email || "",
+                    donation.transactionId || "",
+                    donation.payuPaymentId || "",
+                    donation.message || ""
                   ]
-                    .join(' ')
-                    .toLowerCase()
+                  .join(" ")
+                  .toLowerCase()
                 %>"
+
               >
 
-
-                <!-- NUMBER -->
 
                 <td>
 
@@ -1779,26 +2161,19 @@
                 </td>
 
 
-                <!-- DONOR -->
-
                 <td>
 
-                  <div
-                    class="donor-primary"
-                  >
+                  <div class="donor-primary">
 
                     <%= donation.donorName ||
                         "-" %>
 
                   </div>
 
-
                   <span
                     class="badge badge-donation"
                   >
-
                     Donation
-
                   </span>
 
 
@@ -1810,7 +2185,7 @@
                       style="
                         margin-top:7px;
                         color:#777;
-                        font-size:11px;
+                        font-size:10px;
                         max-width:220px;
                       "
                     >
@@ -1827,8 +2202,6 @@
 
                 </td>
 
-
-                <!-- CONTACT -->
 
                 <td>
 
@@ -1860,8 +2233,6 @@
                 </td>
 
 
-                <!-- AMOUNT -->
-
                 <td class="amount-cell">
 
                   ₹<%= Number(
@@ -1869,51 +2240,40 @@
                   ).toLocaleString(
                     "en-IN",
                     {
-                      minimumFractionDigits: 2
+                      minimumFractionDigits:
+                        2
                     }
                   ) %>
 
                 </td>
 
 
-                <!-- PAYMENT -->
-
                 <td>
 
                   <strong>
-
                     <%= donation.paymentMode ||
                         "Online" %>
-
                   </strong>
 
                 </td>
 
-
-                <!-- STATUS -->
 
                 <td>
 
                   <span
                     class="badge badge-success"
                   >
-
                     ●
                     <%= donation.paymentStatus ||
                         "SUCCESS" %>
-
                   </span>
 
                 </td>
 
 
-                <!-- TRANSACTION -->
-
                 <td>
 
-                  <div
-                    class="transaction-id"
-                  >
+                  <div class="transaction-id">
 
                     <%= donation.transactionId ||
                         "-" %>
@@ -1925,30 +2285,21 @@
                     donation.payuPaymentId
                   ) { %>
 
-
-                    <div
-                      class="payu-id"
-                      style="margin-top:7px;"
-                    >
+                    <div class="payu-id">
 
                       PayU:
                       <%= donation.payuPaymentId %>
 
                     </div>
 
-
                   <% } %>
 
                 </td>
 
 
-                <!-- DATE -->
-
                 <td>
 
-                  <div
-                    class="date-main"
-                  >
+                  <div class="date-main">
 
                     <%= donation.displayDate ||
                         "-" %>
@@ -1960,9 +2311,7 @@
                     donation.displayTime
                   ) { %>
 
-                    <div
-                      class="date-time"
-                    >
+                    <div class="date-time">
 
                       <%= donation.displayTime %>
 
@@ -1973,45 +2322,33 @@
                 </td>
 
 
-                <!-- DONATION CERTIFICATE -->
-
                 <td>
 
                   <% if (
                     donation.transactionId
                   ) { %>
 
-
                     <a
                       href="/donate/certificate/<%= encodeURIComponent(
                         donation.transactionId
                       ) %>"
-
                       class="certificate-btn"
-
                       target="_blank"
-
                       rel="noopener"
                     >
-
                       Certificate
-
                     </a>
-
 
                   <% } else { %>
 
-
-                    <span
-                      style="color:#999;"
-                    >
+                    <span style="color:#999;">
                       -
                     </span>
-
 
                   <% } %>
 
                 </td>
+
 
               </tr>
 
@@ -2052,11 +2389,12 @@
   </section>
 
 
-  <!-- ========================================
+  <!-- ===================================================
        TODAY'S COLLECTION
-  ======================================== -->
+  =================================================== -->
 
   <section class="dashboard-card">
+
 
     <div class="card-header">
 
@@ -2075,7 +2413,8 @@
     </div>
 
 
-    <div class="summary-strip">
+    <div class="today-grid">
+
 
       <div class="summary-box">
 
@@ -2127,14 +2466,15 @@
 
       </div>
 
+
     </div>
 
   </section>
 
 
-  <!-- ========================================
+  <!-- ===================================================
        MEDICAL REQUESTS
-  ======================================== -->
+  =================================================== -->
 
   <section class="dashboard-card">
 
@@ -2163,7 +2503,7 @@
         <span
           style="
             color:#777;
-            font-size:13px;
+            font-size:12px;
           "
         >
           request(s)
@@ -2233,12 +2573,31 @@
 
           <tbody>
 
+
             <% medicalRecords.forEach(
               (record, index) => {
             %>
 
 
-              <tr>
+              <tr
+
+                class="medical-row"
+
+                data-report-date="<%=
+                  record.submittedAt
+                    ? new Date(
+                        record.submittedAt
+                      ).toLocaleDateString(
+                        "en-CA",
+                        {
+                          timeZone:
+                            "Asia/Kolkata"
+                        }
+                      )
+                    : ""
+                %>"
+
+              >
 
 
                 <td>
@@ -2264,10 +2623,13 @@
                     record.aadharNumber
                   ) { %>
 
-
                     <div
-                      class="sensitive-value"
-                      style="margin-top:6px;"
+                      style="
+                        margin-top:6px;
+                        font-family:monospace;
+                        font-size:10px;
+                        color:#666;
+                      "
                     >
 
                       Aadhaar:
@@ -2276,7 +2638,6 @@
                       ).slice(-4) %>
 
                     </div>
-
 
                   <% } %>
 
@@ -2362,6 +2723,7 @@
 
             <% }) %>
 
+
           </tbody>
 
         </table>
@@ -2371,19 +2733,18 @@
 
     <% } %>
 
+
   </section>
 
 
-  <!-- ========================================
+  <!-- ===================================================
        FOOTER
-  ======================================== -->
+  =================================================== -->
 
   <div class="dashboard-footer">
 
     Manorama Charitable Trust
-
     &nbsp;•&nbsp;
-
     Admin Panel
 
   </div>
@@ -2392,323 +2753,686 @@
 </main>
 
 
-<!-- ========================================
-     DASHBOARD FILTER SCRIPT
-======================================== -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
-  (() => {
-
-    /* ========================================
-       MEMBERSHIP FILTER
-    ======================================== */
-
-    const membershipSearch =
-      document.getElementById(
-        "membershipSearch"
-      );
-
-    const membershipPaymentModeFilter =
-      document.getElementById(
-        "membershipPaymentModeFilter"
-      );
-
-    const membershipTypeFilter =
-      document.getElementById(
-        "membershipTypeFilter"
-      );
-
-    const membershipRows =
-      Array.from(
-        document.querySelectorAll(
-          ".membership-row"
-        )
-      );
-
-    const noMembershipResults =
-      document.getElementById(
-        "noMembershipResults"
-      );
+(() => {
 
 
-    function filterMemberships() {
+  /* =====================================================
+     MEMBERSHIP FILTER
+  ===================================================== */
 
-      const search =
-        String(
-          membershipSearch?.value || ""
-        )
-          .trim()
+  const membershipSearch =
+    document.getElementById(
+      "membershipSearch"
+    );
+
+  const membershipPaymentModeFilter =
+    document.getElementById(
+      "membershipPaymentModeFilter"
+    );
+
+  const membershipTypeFilter =
+    document.getElementById(
+      "membershipTypeFilter"
+    );
+
+  const membershipRows =
+    Array.from(
+      document.querySelectorAll(
+        ".membership-row"
+      )
+    );
+
+  const noMembershipResults =
+    document.getElementById(
+      "noMembershipResults"
+    );
+
+
+  function filterMemberships() {
+
+    const search =
+      String(
+        membershipSearch?.value || ""
+      )
+      .trim()
+      .toLowerCase();
+
+
+    const paymentMode =
+      String(
+        membershipPaymentModeFilter?.value ||
+        ""
+      )
+      .trim()
+      .toLowerCase();
+
+
+    const membershipType =
+      String(
+        membershipTypeFilter?.value ||
+        ""
+      )
+      .trim()
+      .toLowerCase();
+
+
+    let visibleCount = 0;
+
+
+    membershipRows.forEach(
+      (row) => {
+
+        const rowSearch =
+          String(
+            row.dataset.search || ""
+          )
           .toLowerCase();
 
 
-      const paymentMode =
-        String(
-          membershipPaymentModeFilter?.value ||
-          ""
-        )
-          .trim()
+        const rowPaymentMode =
+          String(
+            row.dataset.paymentMode || ""
+          )
           .toLowerCase();
 
 
-      const membershipType =
-        String(
-          membershipTypeFilter?.value ||
-          ""
-        )
-          .trim()
+        const rowMembershipType =
+          String(
+            row.dataset.membershipType || ""
+          )
           .toLowerCase();
 
 
-      let visibleCount = 0;
+        const matchesSearch =
+          !search ||
+          rowSearch.includes(
+            search
+          );
 
 
-      membershipRows.forEach(
-        (row) => {
-
-          const rowSearch =
-            String(
-              row.dataset.search || ""
-            ).toLowerCase();
+        const matchesPaymentMode =
+          !paymentMode ||
+          rowPaymentMode ===
+            paymentMode;
 
 
-          const rowPaymentMode =
-            String(
-              row.dataset.paymentMode || ""
-            ).toLowerCase();
+        const matchesMembershipType =
+          !membershipType ||
+          rowMembershipType ===
+            membershipType;
 
 
-          const rowMembershipType =
-            String(
-              row.dataset.membershipType || ""
-            ).toLowerCase();
+        const visible =
+          matchesSearch &&
+          matchesPaymentMode &&
+          matchesMembershipType;
 
 
-          const matchesSearch =
-            !search ||
-            rowSearch.includes(
-              search
-            );
-
-
-          const matchesPaymentMode =
-            !paymentMode ||
-            rowPaymentMode ===
-              paymentMode;
-
-
-          const matchesMembershipType =
-            !membershipType ||
-            rowMembershipType ===
-              membershipType;
-
-
-          const visible =
-            matchesSearch &&
-            matchesPaymentMode &&
-            matchesMembershipType;
-
-
-          row.style.display =
-            visible
-              ? ""
-              : "none";
-
-
-          if (visible) {
-            visibleCount++;
-          }
-
-        }
-      );
-
-
-      if (noMembershipResults) {
-
-        noMembershipResults.style.display =
-          membershipRows.length > 0 &&
-          visibleCount === 0
-            ? "block"
+        row.style.display =
+          visible
+            ? ""
             : "none";
 
+
+        if (visible) {
+          visibleCount++;
+        }
+
       }
+    );
+
+
+    if (noMembershipResults) {
+
+      noMembershipResults.style.display =
+        membershipRows.length > 0 &&
+        visibleCount === 0
+          ? "block"
+          : "none";
 
     }
 
+  }
 
-    membershipSearch?.addEventListener(
-      "input",
+
+  membershipSearch?.addEventListener(
+    "input",
+    filterMemberships
+  );
+
+
+  membershipPaymentModeFilter
+    ?.addEventListener(
+      "change",
       filterMemberships
     );
 
 
-    membershipPaymentModeFilter
-      ?.addEventListener(
-        "change",
-        filterMemberships
+  membershipTypeFilter
+    ?.addEventListener(
+      "change",
+      filterMemberships
+    );
+
+
+  /* =====================================================
+     DONATION FILTER
+  ===================================================== */
+
+  const donationSearch =
+    document.getElementById(
+      "donationSearch"
+    );
+
+  const donationPaymentModeFilter =
+    document.getElementById(
+      "donationPaymentModeFilter"
+    );
+
+  const donationAmountFilter =
+    document.getElementById(
+      "donationAmountFilter"
+    );
+
+  const donationRows =
+    Array.from(
+      document.querySelectorAll(
+        ".donation-row"
+      )
+    );
+
+  const noDonationResults =
+    document.getElementById(
+      "noDonationResults"
+    );
+
+
+  function filterDonations() {
+
+    const search =
+      String(
+        donationSearch?.value || ""
+      )
+      .trim()
+      .toLowerCase();
+
+
+    const paymentMode =
+      String(
+        donationPaymentModeFilter?.value ||
+        ""
+      )
+      .trim()
+      .toLowerCase();
+
+
+    const minimumAmount =
+      Number(
+        donationAmountFilter?.value || 0
       );
 
 
-    membershipTypeFilter
-      ?.addEventListener(
-        "change",
-        filterMemberships
-      );
+    let visibleCount = 0;
 
 
-    /* ========================================
-       DONATION FILTER
-    ======================================== */
+    donationRows.forEach(
+      (row) => {
 
-    const donationSearch =
-      document.getElementById(
-        "donationSearch"
-      );
-
-    const donationPaymentModeFilter =
-      document.getElementById(
-        "donationPaymentModeFilter"
-      );
-
-    const donationAmountFilter =
-      document.getElementById(
-        "donationAmountFilter"
-      );
-
-    const donationRows =
-      Array.from(
-        document.querySelectorAll(
-          ".donation-row"
-        )
-      );
-
-    const noDonationResults =
-      document.getElementById(
-        "noDonationResults"
-      );
-
-
-    function filterDonations() {
-
-      const search =
-        String(
-          donationSearch?.value || ""
-        )
-          .trim()
+        const rowSearch =
+          String(
+            row.dataset.search || ""
+          )
           .toLowerCase();
 
 
-      const paymentMode =
-        String(
-          donationPaymentModeFilter?.value ||
-          ""
-        )
-          .trim()
+        const rowPaymentMode =
+          String(
+            row.dataset.paymentMode || ""
+          )
           .toLowerCase();
 
 
-      const minimumAmount =
-        Number(
-          donationAmountFilter?.value || 0
-        );
+        const rowAmount =
+          Number(
+            row.dataset.amount || 0
+          );
 
 
-      let visibleCount = 0;
+        const matchesSearch =
+          !search ||
+          rowSearch.includes(
+            search
+          );
 
 
-      donationRows.forEach(
-        (row) => {
-
-          const rowSearch =
-            String(
-              row.dataset.search || ""
-            ).toLowerCase();
+        const matchesPaymentMode =
+          !paymentMode ||
+          rowPaymentMode ===
+            paymentMode;
 
 
-          const rowPaymentMode =
-            String(
-              row.dataset.paymentMode || ""
-            ).toLowerCase();
+        const matchesAmount =
+          !minimumAmount ||
+          rowAmount >=
+            minimumAmount;
 
 
-          const rowAmount =
-            Number(
-              row.dataset.amount || 0
-            );
+        const visible =
+          matchesSearch &&
+          matchesPaymentMode &&
+          matchesAmount;
 
 
-          const matchesSearch =
-            !search ||
-            rowSearch.includes(
-              search
-            );
-
-
-          const matchesPaymentMode =
-            !paymentMode ||
-            rowPaymentMode ===
-              paymentMode;
-
-
-          const matchesAmount =
-            !minimumAmount ||
-            rowAmount >=
-              minimumAmount;
-
-
-          const visible =
-            matchesSearch &&
-            matchesPaymentMode &&
-            matchesAmount;
-
-
-          row.style.display =
-            visible
-              ? ""
-              : "none";
-
-
-          if (visible) {
-            visibleCount++;
-          }
-
-        }
-      );
-
-
-      if (noDonationResults) {
-
-        noDonationResults.style.display =
-          donationRows.length > 0 &&
-          visibleCount === 0
-            ? "block"
+        row.style.display =
+          visible
+            ? ""
             : "none";
 
+
+        if (visible) {
+          visibleCount++;
+        }
+
       }
+    );
+
+
+    if (noDonationResults) {
+
+      noDonationResults.style.display =
+        donationRows.length > 0 &&
+        visibleCount === 0
+          ? "block"
+          : "none";
 
     }
 
+  }
 
-    donationSearch?.addEventListener(
-      "input",
+
+  donationSearch?.addEventListener(
+    "input",
+    filterDonations
+  );
+
+
+  donationPaymentModeFilter
+    ?.addEventListener(
+      "change",
       filterDonations
     );
 
 
-    donationPaymentModeFilter
-      ?.addEventListener(
-        "change",
-        filterDonations
+  donationAmountFilter
+    ?.addEventListener(
+      "change",
+      filterDonations
+    );
+
+
+  /* =====================================================
+     DATE-WISE REPORT
+  ===================================================== */
+
+  const reportDate =
+    document.getElementById(
+      "reportDate"
+    );
+
+  const clearReportDate =
+    document.getElementById(
+      "clearReportDate"
+    );
+
+  const downloadDailyReport =
+    document.getElementById(
+      "downloadDailyReport"
+    );
+
+
+  const selectedMembershipCount =
+    document.getElementById(
+      "selectedMembershipCount"
+    );
+
+  const selectedDonationCount =
+    document.getElementById(
+      "selectedDonationCount"
+    );
+
+  const selectedMedicalCount =
+    document.getElementById(
+      "selectedMedicalCount"
+    );
+
+
+  const selectedMembershipCollection =
+    document.getElementById(
+      "selectedMembershipCollection"
+    );
+
+  const selectedDonationCollection =
+    document.getElementById(
+      "selectedDonationCollection"
+    );
+
+  const selectedTotalCollection =
+    document.getElementById(
+      "selectedTotalCollection"
+    );
+
+
+  const selectedDateText =
+    document.getElementById(
+      "selectedDateText"
+    );
+
+
+  const reportMembershipRows =
+    Array.from(
+      document.querySelectorAll(
+        ".membership-row"
+      )
+    );
+
+
+  const reportDonationRows =
+    Array.from(
+      document.querySelectorAll(
+        ".donation-row"
+      )
+    );
+
+
+  const reportMedicalRows =
+    Array.from(
+      document.querySelectorAll(
+        ".medical-row"
+      )
+    );
+
+
+  function formatReportDate(
+    value
+  ) {
+
+    if (!value) {
+      return "";
+    }
+
+
+    const parts =
+      value.split("-");
+
+
+    if (
+      parts.length !== 3
+    ) {
+      return value;
+    }
+
+
+    return (
+      parts[2] +
+      "-" +
+      parts[1] +
+      "-" +
+      parts[0]
+    );
+
+  }
+
+
+  function updateDateWiseReport() {
+
+    const selectedDate =
+      String(
+        reportDate?.value || ""
+      )
+      .trim();
+
+
+    /* -----------------------------------------
+       RESET
+    ----------------------------------------- */
+
+    if (!selectedDate) {
+
+      selectedMembershipCount.textContent =
+        "0";
+
+      selectedDonationCount.textContent =
+        "0";
+
+      selectedMedicalCount.textContent =
+        "0";
+
+
+      selectedMembershipCollection.textContent =
+        "₹0";
+
+      selectedDonationCollection.textContent =
+        "₹0";
+
+      selectedTotalCollection.textContent =
+        "₹0";
+
+
+      selectedDateText.style.display =
+        "none";
+
+      return;
+
+    }
+
+
+    /* -----------------------------------------
+       MEMBERSHIPS
+    ----------------------------------------- */
+
+    const selectedMemberships =
+      reportMembershipRows.filter(
+        (row) =>
+          row.dataset.reportDate ===
+          selectedDate
       );
 
 
-    donationAmountFilter
-      ?.addEventListener(
-        "change",
-        filterDonations
+    /* -----------------------------------------
+       DONATIONS
+    ----------------------------------------- */
+
+    const selectedDonations =
+      reportDonationRows.filter(
+        (row) =>
+          row.dataset.reportDate ===
+          selectedDate
       );
 
-  })();
+
+    /* -----------------------------------------
+       MEDICAL
+    ----------------------------------------- */
+
+    const selectedMedical =
+      reportMedicalRows.filter(
+        (row) =>
+          row.dataset.reportDate ===
+          selectedDate
+      );
+
+
+    /* -----------------------------------------
+       MEMBERSHIP COLLECTION
+    ----------------------------------------- */
+
+    const membershipCollection =
+      selectedMemberships.reduce(
+        (
+          total,
+          row
+        ) => {
+
+          return (
+            total +
+            Number(
+              row.dataset.reportAmount ||
+              0
+            )
+          );
+
+        },
+        0
+      );
+
+
+    /* -----------------------------------------
+       DONATION COLLECTION
+    ----------------------------------------- */
+
+    const donationCollection =
+      selectedDonations.reduce(
+        (
+          total,
+          row
+        ) => {
+
+          return (
+            total +
+            Number(
+              row.dataset.reportAmount ||
+              0
+            )
+          );
+
+        },
+        0
+      );
+
+
+    /* -----------------------------------------
+       TOTAL
+    ----------------------------------------- */
+
+    const totalCollection =
+      membershipCollection +
+      donationCollection;
+
+
+    /* -----------------------------------------
+       COUNTS
+    ----------------------------------------- */
+
+    selectedMembershipCount.textContent =
+      selectedMemberships.length;
+
+
+    selectedDonationCount.textContent =
+      selectedDonations.length;
+
+
+    selectedMedicalCount.textContent =
+      selectedMedical.length;
+
+
+    /* -----------------------------------------
+       AMOUNTS
+    ----------------------------------------- */
+
+    selectedMembershipCollection.textContent =
+      "₹" +
+      membershipCollection.toLocaleString(
+        "en-IN"
+      );
+
+
+    selectedDonationCollection.textContent =
+      "₹" +
+      donationCollection.toLocaleString(
+        "en-IN"
+      );
+
+
+    selectedTotalCollection.textContent =
+      "₹" +
+      totalCollection.toLocaleString(
+        "en-IN"
+      );
+
+
+    /* -----------------------------------------
+       MESSAGE
+    ----------------------------------------- */
+
+    selectedDateText.style.display =
+      "block";
+
+
+    selectedDateText.innerHTML =
+      `
+        Showing records for
+        <strong>
+          ${formatReportDate(
+            selectedDate
+          )}
+        </strong>
+      `;
+
+  }
+
+
+  reportDate?.addEventListener(
+    "change",
+    updateDateWiseReport
+  );
+
+
+  clearReportDate?.addEventListener(
+    "click",
+    () => {
+
+      if (reportDate) {
+        reportDate.value = "";
+      }
+
+      updateDateWiseReport();
+
+    }
+  );
+
+
+  downloadDailyReport?.addEventListener(
+    "click",
+    () => {
+
+      const selectedDate =
+        String(
+          reportDate?.value || ""
+        ).trim();
+
+      if (!selectedDate) {
+        alert(
+          "Please select a date first."
+        );
+        return;
+      }
+
+      window.location.href =
+        `/admin/report/download?date=${encodeURIComponent(
+          selectedDate
+        )}`;
+
+    }
+  );
+
+
+})();
 
 </script>
 
